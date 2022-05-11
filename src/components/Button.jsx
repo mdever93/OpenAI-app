@@ -1,10 +1,10 @@
 import React from "react";
 import './Button.scss';
 
-export default function Button(props) {
+export const Button = (props) => {
   return (
-    <button>
-      
-    </button>
+    <button
+      onClick={props.onClick}
+    >{props.children}</button>
   )
 }
