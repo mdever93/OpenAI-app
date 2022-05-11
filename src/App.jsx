@@ -7,6 +7,7 @@ function App() {
   return (
     <div className="app">
       <Form/>
+      <div className='response__section'></div>
     </div>
   );
 }
