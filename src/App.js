@@ -1,11 +1,12 @@
 import { Button } from './components/Button';
+import Form from './components/Form';
 
-import './App.css';
+import './App.scss';
 
 function App() {
   return (
-    <div className="App">
-      <Button/>
+    <div className="app">
+      <Form/>
     </div>
   );
 }
