@@ -4,7 +4,7 @@ import { Button } from './Button'
 import './Form.scss'
 
 
-const Form = () => {
+const Form = (props) => {
   const [prompt, setPrompt] = useState('')
   return (
     <div className='form__container'>
@@ -22,7 +22,7 @@ const Form = () => {
         />
       </form>
       <div className='button__container'>
-      <Button onClick={console.log('Submit')} >Submit</Button>
+      <Button onClick={() => props.getPrompt(prompt)} disabled={!prompt} >Submit</Button>
       </div>
     </div>
   )

@@ -18,4 +18,9 @@ button {
     background-color: rgba($color: #51aeff, $alpha: 0.9);
     // filter: brightness(.9);
   }
+
+  &:disabled {
+    background-color: rgba($color: #51aeff, $alpha: 0.3);
+    cursor: not-allowed;
+  }
 }
