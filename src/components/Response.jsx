@@ -4,8 +4,8 @@ import './Response.scss'
 
 const Response = (props) => {
   return (
-    <div className='response'>
-      {props.children}
+    <div className={`response ${props.response && 'visible'}`}>
+      {props.response}
     </div>
   )
 }

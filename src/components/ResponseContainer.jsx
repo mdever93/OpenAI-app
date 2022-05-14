@@ -8,7 +8,7 @@ const ResponseContainer = (props) => {
   return (
     <div className='response__container'>
       <Prompt>{props.prompt}</Prompt>
-      {props.response && <Response>{props.response}</Response>}
+      <Response response={props.response} />
       {/* {props.children} */}
     </div>
   )

@@ -15,13 +15,13 @@ function App() {
 
   const getPrompt = (prompt) => {
     console.log(prompt, 'APP.JS LINE 14');
-    setCurrentPrompt(prompt)    
+    setCurrentPrompt(prompt)
     // setCurrentPrompt(renderPrompt(prompt))    
     const configuration = new Configuration({
       apiKey: process.env.REACT_APP_OPENAI_API_KEY,
     });
     const openai = new OpenAIApi(configuration);
-    
+
     openai.createCompletion("text-curie-001", {
       prompt: `${prompt}`,
       temperature: 0.7,
@@ -30,28 +30,30 @@ function App() {
       frequency_penalty: 0,
       presence_penalty: 0,
     })
-    .then((res) => {
-      console.log(res);
-      setCurrentResponse({
-        text: res.data.choices[0].text,
-        id: res.data.id
+      .then((res) => {
+        console.log(res);
+        setCurrentResponse({
+          text: res.data.choices[0].text,
+          id: res.data.id
+        })
       })
-    })
   }
 
   useEffect(() => {
-    if (currentPrompt && currentResponse) {
-      setAllResponses([<ResponseContainer id={currentResponse.id} prompt={currentPrompt} response={currentResponse.text} />, ...allResponses])
-      setCurrentPrompt(null)
-      setCurrentResponse({})
-    }
+    const timer = setTimeout(() => {
+      if (currentPrompt && currentResponse) {
+        setAllResponses([<ResponseContainer key={currentResponse.id} prompt={currentPrompt} response={currentResponse.text} />, ...allResponses])
+        setCurrentPrompt(null)
+        setCurrentResponse({})
+      }
+    }, 1000);
 
-  
-    // return () => {
-    //   second
-    // }
+
+    return () => {
+      clearTimeout(timer)
+    }
   }, [currentResponse])
-  
+
 
   // const renderPrompt = (prompt) => {
   //   return (<Prompt>{prompt}</Prompt>)
@@ -61,8 +63,8 @@ function App() {
 
   return (
     <div className="app">
-      <Form 
-      getPrompt={getPrompt}
+      <Form
+        getPrompt={getPrompt}
       // disabled={!(currentPrompt && currentResponse)}
       />
       <div className='response__section'>
