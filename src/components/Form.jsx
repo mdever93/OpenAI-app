@@ -16,9 +16,10 @@ const Form = (props) => {
             setPrompt(event.target.value)
           }}
           className="form__textarea"
-          name="name"
+          name="prompt"
           type="text"
           placeholder="Enter prompt"
+          rows="1"
         />
       </form>
       <div className='button__container'>

@@ -13,7 +13,8 @@ function App() {
   const [currentResponse, setCurrentResponse] = useState(null)
   const getPrompt = (prompt) => {
     console.log(prompt, 'APP.JS LINE 14');
-    setCurrentPrompt(renderPrompt(prompt))    
+    setCurrentPrompt(<Prompt>{prompt}</Prompt>)    
+    // setCurrentPrompt(renderPrompt(prompt))    
     const configuration = new Configuration({
       apiKey: process.env.REACT_APP_OPENAI_API_KEY,
     });
@@ -29,13 +30,13 @@ function App() {
     })
     .then((res) => {
       console.log(res);
-      setCurrentResponse(res.data.choices[0].text)
+      setCurrentResponse(<Response>{res.data.choices[0].text}</Response>)
     })
   }
 
-  const renderPrompt = (prompt) => {
-    return (<Prompt>{prompt}</Prompt>)
-  }
+  // const renderPrompt = (prompt) => {
+  //   return (<Prompt>{prompt}</Prompt>)
+  // }
 
 
 
