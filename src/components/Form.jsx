@@ -6,6 +6,11 @@ import './Form.scss'
 
 const Form = (props) => {
   const [prompt, setPrompt] = useState('')
+
+  const handleClick = () => {
+    props.getPrompt(prompt)
+    setPrompt('')
+  }
   return (
     <div className='form__container'>
       <p className='p-text'>Form</p>
@@ -23,7 +28,7 @@ const Form = (props) => {
         />
       </form>
       <div className='button__container'>
-      <Button onClick={() => props.getPrompt(prompt)} disabled={!prompt} >Submit</Button>
+      <Button onClick={handleClick} disabled={!prompt} >Submit</Button>
       </div>
     </div>
   )
