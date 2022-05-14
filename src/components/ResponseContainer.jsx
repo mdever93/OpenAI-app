@@ -7,7 +7,9 @@ import './ResponseContainer.scss'
 const ResponseContainer = (props) => {
   return (
     <div className='response__container'>
-      {props.children}
+      <Prompt>{props.prompt}</Prompt>
+      {props.response && <Response>{props.response}</Response>}
+      {/* {props.children} */}
     </div>
   )
 }

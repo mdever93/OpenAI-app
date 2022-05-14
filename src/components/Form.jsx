@@ -24,7 +24,7 @@ const Form = (props) => {
           name="prompt"
           type="text"
           placeholder="Enter prompt"
-          rows="1"
+          disabled={props.disabled}
         />
       </form>
       <div className='button__container'>
