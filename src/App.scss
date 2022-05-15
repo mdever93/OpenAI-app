@@ -2,12 +2,13 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: whitesmoke;
+  // background-color: whitesmoke;
   height: 100vh;
+  transition: all 0.5s;
 }
 
 .response__section {
-  background-color: white;
+  background-color: var(--primary-color);
   width: 99%;
   // height: 100%;
   flex: 3;

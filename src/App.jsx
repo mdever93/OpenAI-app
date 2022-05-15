@@ -4,6 +4,7 @@ import Prompt from './components/Prompt';
 import Response from './components/Response';
 import { useState, useEffect } from 'react';
 import { Configuration, OpenAIApi } from "openai";
+import DarkMode from './DarkMode';
 
 
 import './App.scss';
@@ -63,6 +64,9 @@ function App() {
 
   return (
     <div className="app">
+      <header className='app__header'>
+        <DarkMode />
+      </header>
       <Form
         getPrompt={getPrompt}
       // disabled={!(currentPrompt && currentResponse)}
