@@ -5,14 +5,47 @@
   // background-color: whitesmoke;
   height: 100vh;
   transition: all 0.5s;
+  overflow: scroll;
+}
+
+.app__header {
+  width: 100%;
+  // height: 25px;
+  // font-size: 1.5vw;
+  // min-height: 40px;
+  background-color: var(--primary-color);
+  opacity: 0.7;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: fixed;
+  top: 0;
+  padding: 5px;
+  padding-left: 2vw;
+  padding-right: 2vw;
+
+  & h1 {
+    font-size: 24px;
+  }
+
+  & a {
+    font-size: 10px;
+    margin-left: 5px;
+  }
+}
+
+.app__title {
+  display: flex;
+  justify-content: space-between;
+  align-content: space-between;
 }
 
 .response__section {
   background-color: var(--primary-color);
   width: 99%;
   // height: 100%;
-  flex: 3;
-  min-height: 200px;
+  // flex: 3;
+  // min-height: 200px;
   margin: 1vw;
   margin-top: 0.5vw;
   padding: 1vw;
@@ -22,5 +55,5 @@
   border-radius: 1rem;
   box-shadow: 0 0 1px 1px rgba($color: #000000, $alpha: 0.1);
   max-width: calc(800px + 5vw);
-  overflow: auto;
+  // overflow: auto;
 }

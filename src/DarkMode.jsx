@@ -1,5 +1,8 @@
 import "./DarkMode.css";
 import { ChangeEventHandler } from "react";
+import LightModeIcon from '@mui/icons-material/LightMode';
+import DarkModeIcon from '@mui/icons-material/DarkMode';
+import { useState } from "react";
 
 const setDark = () => {
 
@@ -36,19 +39,30 @@ const toggleTheme = (e) => {
 
 
 const DarkMode = () => {
+  const [darkmode, setDarkmode] = useState(storedTheme === 'dark')
+  const handleClick = (e) => {
+    toggleTheme(e);
+    setDarkmode(!darkmode)
+  }
+
   return (
     <div className="toggle-theme-wrapper">
-      <span>☀️</span>
       <label className="toggle-theme" htmlFor="checkbox">
         <input
           type="checkbox"
           id="checkbox"
-          onChange={toggleTheme}
+          onChange={handleClick}
           defaultChecked={defaultDark}
         />
-        <div className="slider round"></div>
+        <div className="slider round">
+          <div className="icon dark">
+          {darkmode && <DarkModeIcon />}
+          </div>
+          <div className="icon light">
+          {!darkmode && <LightModeIcon />}
+          </div>
+        </div>
       </label>
-      <span>🌒</span>
     </div>
   );
 };

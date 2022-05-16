@@ -13,7 +13,7 @@ const Form = (props) => {
   }
   return (
     <div className='form__container'>
-      <p className='p-text'>Form</p>
+      <h2 className='form__header'>Form</h2>
       <form className='form' onSubmit={event => event.preventDefault()} autoComplete="off">
         <textarea
           value={prompt}

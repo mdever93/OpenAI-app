@@ -76,8 +76,23 @@ input:checked + .slider {
 
 .slider.round {
   border-radius: 34px;
+  display: flex;
+  align-items: center;
+  justify-items: center;
+  justify-content: center;
+  align-content: center;
+  justify-content: space-evenly;
+
 }
 
 .slider.round:before {
   border-radius: 50%;
+  background-color: var(--primary-color);
+}
+
+.icon {
+  display: flex;
+  align-items: center;
+  height: 24px;
+  width: 24px;
 }
