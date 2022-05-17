@@ -5,6 +5,7 @@ import Response from './components/Response';
 import { useState, useEffect } from 'react';
 import { Configuration, OpenAIApi } from "openai";
 import DarkMode from './DarkMode';
+import Navbar from './components/Navbar';
 
 
 import './App.scss';
@@ -13,6 +14,19 @@ function App() {
   const [currentPrompt, setCurrentPrompt] = useState(null)
   const [currentResponse, setCurrentResponse] = useState({})
   const [allResponses, setAllResponses] = useState([])
+
+  useEffect(() => {
+    localStorage.setItem('allResponses', JSON.stringify(allResponses));
+  }, [allResponses]);
+
+  useEffect(() => {
+    const allResponses = JSON.parse(localStorage.getItem('allResponses'));
+    if (allResponses) {
+     setAllResponses(allResponses);
+    }
+  }, []);
+  
+  
 
   const getPrompt = (prompt) => {
     console.log(prompt, 'APP.JS LINE 14');
@@ -64,13 +78,7 @@ function App() {
 
   return (
     <div className="app">
-      <header className='app__header'>
-          <div className='app__title'>
-            <h1>Fun with AI</h1>
-            <a href="https://openai.com/">powered by OpenAI</a>
-          </div>
-        <DarkMode />
-      </header>
+      <Navbar />
       <Form
         getPrompt={getPrompt}
       // disabled={!(currentPrompt && currentResponse)}
@@ -78,7 +86,7 @@ function App() {
       <div className='response__section'>
         {currentPrompt && <ResponseContainer prompt={currentPrompt} response={currentResponse.text} />}
         {allResponses}
-        <ResponseContainer>
+        {/* <ResponseContainer>
           <Prompt>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Deleniti, nam pariatur? Ipsum quod error vitae, dignissimos autem odio maiores eligendi doloremque placeat cum laboriosam! Sed error quasi pariatur placeat praesentium.</Prompt>
           <Response>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum ipsum reprehenderit dolorum modi, eum animi enim minima qui repudiandae rem illum pariatur, distinctio accusantium eveniet, dolor itaque fugiat recusandae aspernatur!</Response>
         </ResponseContainer>
@@ -221,7 +229,7 @@ function App() {
         <ResponseContainer>
           <Prompt>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Deleniti, nam pariatur? Ipsum quod error vitae, dignissimos autem odio maiores eligendi doloremque placeat cum laboriosam! Sed error quasi pariatur placeat praesentium.</Prompt>
           <Response>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum ipsum reprehenderit dolorum modi, eum animi enim minima qui repudiandae rem illum pariatur, distinctio accusantium eveniet, dolor itaque fugiat recusandae aspernatur!</Response>
-        </ResponseContainer>
+        </ResponseContainer> */}
       </div>
     </div>
   );

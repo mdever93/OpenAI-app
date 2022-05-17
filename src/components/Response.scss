@@ -1,5 +1,5 @@
 .response {
-  background-color: rgba($color: darkgrey, $alpha: 0.7);
+  background-color: var(--response-color);
   opacity: 0;
   color: transparent;
   // color: white;

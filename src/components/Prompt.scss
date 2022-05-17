@@ -1,5 +1,5 @@
 .prompt {
-  background-color: rgba($color: #1fcf00, $alpha: 0.7);
+  background-color: var(--prompt-color);
   color: white;
   padding: 10px;
   width: 100%;

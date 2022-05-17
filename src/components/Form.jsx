@@ -13,7 +13,7 @@ const Form = (props) => {
   }
   return (
     <div className='form__container'>
-      <h2 className='form__header'>Form</h2>
+      <h2 className='form__header'>Enter a prompt below and the AI engine will craft a response that is indistinguishable from human writing in most cases</h2>
       <form className='form' onSubmit={event => event.preventDefault()} autoComplete="off">
         <textarea
           value={prompt}
@@ -23,7 +23,7 @@ const Form = (props) => {
           className="form__textarea"
           name="prompt"
           type="text"
-          placeholder="Enter prompt"
+          placeholder="Enter prompt e.g. Write a job application for Shopify "
           disabled={props.disabled}
         />
       </form>
