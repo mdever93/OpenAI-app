@@ -1,6 +1,5 @@
 :root {
   --font-color: #333;
-  /* --background-color: #eee; */
   --primary-color: white;
   --secondary-color: whitesmoke;
   --prompt-color: rgba(31, 207, 0, 0.7);
@@ -17,8 +16,6 @@
   --secondary-color: black;
   --primary-color: rgb(30, 30, 30);
   --primary-color-transparent: rgb(30, 30, 30, 0.7);
-  /* --primary-color: rgb(131, 131, 131); */
-  /* --secondary-color: whitesmoke; */
 
 }
 

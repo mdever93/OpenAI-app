@@ -2,7 +2,6 @@
   background-color: var(--response-color);
   opacity: 0;
   color: transparent;
-  // color: white;
   margin-top: 1vw;
   width: 100%;
   border-radius: 1rem;
@@ -10,12 +9,10 @@
   padding: 0;
   padding-left: 10px;
   padding-right: 10px;
-  // visibility: hidden;
   line-height: 0px;
   transition: line-height 1s, color 1s 0.5s, opacity 1s ;
 
   &.visible {
-    // visibility: visible;
     max-height: none;
     height: auto;
     padding: 10px;
