@@ -10,21 +10,27 @@ import Navbar from './components/Navbar';
 
 import './App.scss';
 
+const useLocalStorage = (storageKey, fallbackState) => {
+  const [value, setValue] = useState(
+    JSON.parse(localStorage.getItem(storageKey)) ?? fallbackState
+  );
+
+  useEffect(() => {
+    localStorage.setItem(storageKey, JSON.stringify(value));
+  }, [value, storageKey]);
+
+  return [value, setValue];
+};
+
+
 function App() {
   const [currentPrompt, setCurrentPrompt] = useState(null)
   const [currentResponse, setCurrentResponse] = useState({})
-  const [allResponses, setAllResponses] = useState([])
-
-  useEffect(() => {
-    localStorage.setItem('allResponses', JSON.stringify(allResponses));
-  }, [allResponses]);
-
-  useEffect(() => {
-    const allResponses = JSON.parse(localStorage.getItem('allResponses'));
-    if (allResponses) {
-     setAllResponses(allResponses);
-    }
-  }, []);
+  const [allResponses, setAllResponses] = useLocalStorage('allResponses', [])
+  const currentResponseObject = {prompt: currentPrompt, response: currentResponse}
+  const renderedResponses = allResponses.map((responseObject) => {
+    return <ResponseContainer key={responseObject.response.id} prompt={responseObject.prompt} response={responseObject.response.text} />
+  })  
   
   
 
@@ -57,7 +63,7 @@ function App() {
   useEffect(() => {
     const timer = setTimeout(() => {
       if (currentPrompt && currentResponse) {
-        setAllResponses([<ResponseContainer key={currentResponse.id} prompt={currentPrompt} response={currentResponse.text} />, ...allResponses])
+        setAllResponses([currentResponseObject, ...allResponses])
         setCurrentPrompt(null)
         setCurrentResponse({})
       }
@@ -85,7 +91,7 @@ function App() {
       />
       <div className='response__section'>
         {currentPrompt && <ResponseContainer prompt={currentPrompt} response={currentResponse.text} />}
-        {allResponses}
+        {renderedResponses}
         {/* <ResponseContainer>
           <Prompt>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Deleniti, nam pariatur? Ipsum quod error vitae, dignissimos autem odio maiores eligendi doloremque placeat cum laboriosam! Sed error quasi pariatur placeat praesentium.</Prompt>
           <Response>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum ipsum reprehenderit dolorum modi, eum animi enim minima qui repudiandae rem illum pariatur, distinctio accusantium eveniet, dolor itaque fugiat recusandae aspernatur!</Response>
