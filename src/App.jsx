@@ -23,6 +23,7 @@ const useLocalStorage = (storageKey, fallbackState) => {
 };
 
 
+
 function App() {
   const [currentPrompt, setCurrentPrompt] = useState(null)
   const [currentResponse, setCurrentResponse] = useState({})
@@ -33,6 +34,10 @@ function App() {
   })  
   
   
+  const clearResponses = () => {
+    localStorage.removeItem('allResponses')
+    setAllResponses([])
+  }
 
   const getPrompt = (prompt) => {
     console.log(prompt, 'APP.JS LINE 14');
@@ -87,6 +92,8 @@ function App() {
       <Navbar />
       <Form
         getPrompt={getPrompt}
+        responses={allResponses}
+        clearResponses={clearResponses}
       // disabled={!(currentPrompt && currentResponse)}
       />
       <div className='response__section'>

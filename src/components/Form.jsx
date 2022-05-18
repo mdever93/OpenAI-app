@@ -28,6 +28,7 @@ const Form = (props) => {
         />
       </form>
       <div className='button__container'>
+      <Button onClick={props.clearResponses} disabled={!props.responses.length} >Clear responses</Button>
       <Button onClick={handleClick} disabled={!prompt} >Submit</Button>
       </div>
     </div>
