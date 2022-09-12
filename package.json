@@ -1,5 +1,6 @@
 {
-  "name": "shopify-frontend-challenge",
+  "homepage": "https://mdever93.github.io/OpenAI-app/",
+  "name": "OpenAI-app",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -13,6 +14,7 @@
     "axios": "^0.27.2",
     "firebase": "^9.8.1",
     "framer-motion": "^6.3.3",
+    "gh-pages": "^4.0.0",
     "openai": "^2.0.5",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
@@ -21,6 +23,8 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",

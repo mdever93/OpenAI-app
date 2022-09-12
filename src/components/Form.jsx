@@ -23,7 +23,7 @@ const Form = (props) => {
           className="form__textarea"
           name="prompt"
           type="text"
-          placeholder="Enter prompt e.g. Write a job application for Shopify "
+          placeholder="Enter prompt e.g. Write a job application for a fullstack developer job"
           disabled={props.disabled}
         />
       </form>
